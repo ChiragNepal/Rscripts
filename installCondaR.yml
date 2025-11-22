@@ -1,0 +1,65 @@
+name: condaR1
+channels:
+  # Order of channels matters: conda-forge before bioconda, before defaults
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # Core R and Essentials (Added r-essentials for robust R environment)
+  - r-base=4.4.3
+  - r-essentials  # CRITICAL: Provides necessary core utilities for R/Bioconductor. 
+  - yq            # CRITICAL: Fixes known post-link script failures for Bioconductor. 
+
+  # CRAN packages
+  - r-tidyverse
+  - r-devtools
+  - r-data.table
+  - r-optparse
+  - r-irkernel
+  - r-wgcna
+  - r-pheatmap
+  - r-ggplot2
+  - r-dplyr
+  - r-tidyr
+  - r-msigdbr
+  - r-seurat
+  - r-readr
+  - r-matrix
+  - r-openxlsx
+  - r-ggrepel
+  - r-patchwork
+  - r-broom
+  - r-survival          
+  - r-forestmodel
+  - r-corrplot
+
+  # Bioconductor core packages
+  - bioconductor-biobase
+  - bioconductor-biocgenerics
+  - bioconductor-s4vectors
+  - bioconductor-iranges
+  - bioconductor-annotationdbi
+  - bioconductor-biostrings
+  - bioconductor-deseq2
+
+  # Bioconductor analysis packages
+  - bioconductor-clusterprofiler   
+  - bioconductor-enrichplot       
+  - bioconductor-fgsea
+  - bioconductor-tximport
+  - bioconductor-ensembldb
+
+  # Organism annotation (rat, mouse, human)
+  - bioconductor-org.rn.eg.db
+  - bioconductor-org.mm.eg.db
+  - bioconductor-org.hs.eg.db
+
+
+# To install R and basic packages
+# conda env create -f installCondaR.yml
+# If you want to update yml file, update the conda environment 
+# conda env update -f installCondaR.yml
+
+
+
