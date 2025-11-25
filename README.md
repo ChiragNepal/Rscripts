@@ -16,7 +16,7 @@ This directory contains R scripts and environment files for reproducible analysi
 This section contains R scripts and functions applicable to multiple analyses.  
 The idea is that if you provide your data objects, these scripts will generate plots and save results automatically.
 
-- **`plot_GSEA_DEG.R`** — Performs GSEA (GO, KEGG, HALLMARK) analysis given a DESeq2 `dds` object.
+- **`function_DEG_GSEA`** — Performs GSEA (GO, KEGG, HALLMARK) analysis given a DESeq2 `dds` object.
 - **`plotCorrelation.R`** — Plots correlations for given data objects.
 
 ---
