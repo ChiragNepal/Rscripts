@@ -6,12 +6,23 @@ channels:
   - defaults
 
 dependencies:
-  # Core R and Essentials (Added r-essentials for robust R environment)
-  - r-base=4.4.3
-  - r-essentials  # CRITICAL: Provides necessary core utilities for R/Bioconductor. 
-  - yq            # CRITICAL: Fixes known post-link script failures for Bioconductor. 
+  # --- Core R, System Compilers, and Utilities ---
+  - r-base=4.3                 # Use R 4.3 for broad Bioconductor compatibility
+  - r-essentials               # Provides necessary core utilities for R/Bioconductor
+  - yq                         # Fixes known post-link script failures for Bioconductor. 
+  
+  # System compilers and libraries required to successfully compile complex R packages 
+  # (especially those with C/C++/Fortran components, like Seurat and RcppArmadillo)
+  - c-compiler
+  - fortran-compiler
+  - zlib
+  - xz
+  - libiconv
+  - glpk
+  - lapack
+  - blas
 
-  # CRAN packages
+  # --- General CRAN Packages ---
   - r-tidyverse
   - r-devtools
   - r-data.table
@@ -23,43 +34,59 @@ dependencies:
   - r-dplyr
   - r-tidyr
   - r-msigdbr
-  - r-seurat
   - r-readr
   - r-matrix
   - r-openxlsx
   - r-ggrepel
   - r-patchwork
   - r-broom
-  - r-survival          
+  - r-survival
   - r-forestmodel
   - r-corrplot
+  - r-stringr
+  - r-ape
+  - r-biocmanager
+  - r-rcpparmadillo
+  - r-xml
+  - r-leidenbase
+  - r-igraph
+  - r-hdf5r                       # For handling HDF5 files (often used in scRNA-seq)
 
-  # Bioconductor core packages
+  # --- Single-Cell and Genomics Packages ---
+  - r-seurat
+  - r-signac                     # CRITICAL: For single-cell ATAC-seq (scATAC) analysis
+  
+  # --- Bioconductor Core and Infrastructure ---
   - bioconductor-biobase
   - bioconductor-biocgenerics
   - bioconductor-s4vectors
   - bioconductor-iranges
   - bioconductor-annotationdbi
   - bioconductor-biostrings
-  - bioconductor-deseq2
+  - bioconductor-rhdf5
+  - bioconductor-rhdf5filters
+  - bioconductor-genomicranges   # Core package for working with genomic coordinates
+  - bioconductor-rtracklayer     # For importing/exporting genomic file formats (BAM, BED, etc.)
 
-  # Bioconductor analysis packages
-  - bioconductor-clusterprofiler   
-  - bioconductor-enrichplot       
+  # --- Bioconductor Analysis Packages ---
+  - bioconductor-deseq2
+  - bioconductor-clusterprofiler
+  - bioconductor-enrichplot
   - bioconductor-fgsea
   - bioconductor-tximport
   - bioconductor-ensembldb
 
-  # Organism annotation (rat, mouse, human)
+  # --- Organism annotation ---
   - bioconductor-org.rn.eg.db
   - bioconductor-org.mm.eg.db
   - bioconductor-org.hs.eg.db
+  - bioconductor-bsgenome.rnorvegicus.ucsc.rn7 
 
-
-# To install R and basic packages
-# conda env create -f installCondaR.yml
-# If you want to update yml file, update the conda environment 
-# conda env update -f installCondaR.yml
-
+# To create this new environment:
+# conda env create -f installCondaR1.yml
+# To update an existing environment named 'condaR1':
+# conda env update -f installCondaR1.yml
+# Remove [sometimes updating can have version issues, might be easier just to install new copy ]
+# conda env remove -n condaR1
 
 
